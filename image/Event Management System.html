@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://localhost:3000/student# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management System</title>
+  <script src="./Event Management System_files/qrcode.js.download"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #navbar {
+      width: 200px;
+      height: 100vh;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+      padding-top: 20px;
+      color: #fff;
+    }
+
+    #navbar a {
+      display: block;
+      padding: 15px;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #555;
+      transition: background-color 0.3s;
+    }
+
+    #navbar a:hover {
+      background-color: #555;
+    }
+
+    #content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+
+    .event-slider-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .event-slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .event-slider img {
+      width: 50%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .event-details {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .event-details h3 {
+      margin-top: 0;
+    }
+
+    .event-details p {
+      margin-bottom: 10px;
+    }
+
+    .event-details button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 10px; /* Add margin to create space between buttons */
+    }
+
+    .event-details button:hover {
+      background-color: #555;
+    }
+
+    .slider-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      z-index: 1;
+    }
+
+    .arrow-button {
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+    }
+
+    .arrow-button:hover {
+      background-color: #ddd;
+    }
+
+    #dashboard,
+    #contact {
+      display: none;
+    }
+
+    #dashboard.active,
+    #contact.active {
+      display: block;
+    }
+
+    .loading-message {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 18px;
+    }
+
+    /* Additional styles for the registration form */
+    #registrationForm {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      text-align: center;
+    }
+
+    #registrationForm label {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    #registrationForm input,
+    #registrationForm select {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #registrationForm button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #registrationForm button:hover {
+      background-color: #555;
+    }
+
+    /* Background overlay styles */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999; /* Increase the z-index to make sure it covers other elements */
+      pointer-events: none; /* Set pointer-events to none initially */
+    }
+
+    .overlay-visible {
+      pointer-events: auto; /* Set pointer-events to auto when overlay is visible */
+      display: block;
+    }
+
+    .overlay-hidden {
+      pointer-events: none;
+      display: none;
+    }
+
+    /* Style to make only the form clickable */
+    .overlay-visible #overlay,
+.overlay-visible #registrationForm,
+.overlay-visible #registrationForm * {
+  pointer-events: auto;
+}
+
+.overlay-visible #content,
+.overlay-visible #content * {
+  pointer-events: none;
+}
+.overlay-visible #overlay {
+  pointer-events: auto;
+  filter: blur(5px); /* Apply a blur effect to the entire page except for the form */
+}
+
+.overlay-visible #registrationForm,
+.overlay-visible #registrationForm * {
+  pointer-events: auto;
+}
+
+.overlay-visible #registrationForm,
+.overlay-visible #registrationForm * {
+  filter: none; /* Remove the blur effect on the form and its components */
+}
+
+.overlay-visible #content,
+.overlay-visible #content * {
+  pointer-events: none;
+}
+  </style>
+</head>
+<body>
+
+  <div id="navbar">
+    <a href="http://localhost:3000/student#" onclick="showSection(&#39;home&#39;)">Home</a>
+    <a href="http://localhost:3000/student#" onclick="showSection(&#39;event&#39;)">Event Listing</a>
+    <a href="http://localhost:3000/student#" onclick="showSection(&#39;dashboard&#39;)">Dashboard</a>
+    <a href="http://localhost:3000/student#" onclick="showSection(&#39;contact&#39;)">Contact</a>
+  </div>
+
+  <div id="content">
+    <div id="home" style="display: none;">
+      <h2>Welcome to the Event Management System</h2>
+      <!-- Add your home content here -->
+    </div>
+
+    <div id="event" style="display: block;">
+      <h2>Event Listing</h2>
+      <div class="event-slider-wrapper" id="eventSliderWrapper1">
+        <div class="event-slider" id="eventSlider" style="transform: translateX(0px);"><div class="event-details">
+          <h3>event1</h3>
+          <img src="./Event Management System_files/event1.webp" alt="event1 Image">
+          <p>Name: event1</p>
+          <p>Last Date: 2024-02-22T18:30:00.000Z</p>
+          <div class="button-container">
+            <!-- Add an event listener to the dynamically created button -->
+            <button onclick="showRegistrationForm()">Register</button>
+            <button>Know More</button>
+          </div>
+        </div><div class="event-details">
+          <h3>event2</h3>
+          <img src="./Event Management System_files/event2.webp" alt="event2 Image">
+          <p>Name: event2</p>
+          <p>Last Date: 2024-02-15T18:30:00.000Z</p>
+          <div class="button-container">
+            <!-- Add an event listener to the dynamically created button -->
+            <button onclick="showRegistrationForm()">Register</button>
+            <button>Know More</button>
+          </div>
+        </div><div class="event-details">
+          <h3>event3</h3>
+          <img src="./Event Management System_files/event3.jpg" alt="event3 Image">
+          <p>Name: event3</p>
+          <p>Last Date: 2024-02-20T18:30:00.000Z</p>
+          <div class="button-container">
+            <!-- Add an event listener to the dynamically created button -->
+            <button onclick="showRegistrationForm()">Register</button>
+            <button>Know More</button>
+          </div>
+        </div></div>
+  
+        <div class="slider-buttons">
+          <span class="arrow-button" onclick="prevSlide()">❮</span>
+          <span class="arrow-button" onclick="nextSlide()">❯</span>
+        </div>
+      </div>
+
+      <!-- Event registration form -->
+      <div id="registrationFormContainer">
+        <h2>Event Registration</h2>
+        <!-- Add an ID to the form for easier reference -->
+        <form id="registrationForm">
+          <label for="eventName">Event Name:</label>
+          <input type="text" id="eventName" name="eventName" required=""><br>
+      
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required=""><br>
+      
+          <label for="paymentMethod">Payment Method:</label>
+          <select id="paymentMethod" name="paymentMethod" required="" onchange="generateQRCode()">
+            <option value="creditCard">Credit Card</option>
+            <option value="debitCard">Debit Card</option>
+            <option value="paypal">PayPal</option>
+          </select><br>
+      
+          <!-- Container for displaying the generated QR code -->
+          <div id="qrcodeContainer"></div>
+      
+          <!-- Add 'return false;' to prevent form submission -->
+          <button type="button" onclick="showRegistrationForm(); return false;">Register</button>
+      
+          <!-- Close button for the registration form -->
+          <button type="button" onclick="hideRegistrationForm()">Close</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div id="dashboard" style="display: none;">
+      <h2>Dashboard</h2>
+      <!-- Add your dashboard content here -->
+    </div>
+
+    <div id="contact" style="display: none;">
+      <h2>Contact</h2>
+      <!-- Add your contact content here -->
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script>
+     let currentSlide = 0;
+
+function nextSlide() {
+  currentSlide++;
+  showSlide();
+}
+
+function prevSlide() {
+  currentSlide--;
+  showSlide();
+}
+
+function showSlide() {
+  const slider = document.getElementById('eventSlider');
+  const slideWidth = slider.offsetWidth;
+
+  if (currentSlide < 0) {
+    currentSlide = 2; // Assuming 3 slides, update if you have more slides
+  } else if (currentSlide > 2) {
+    currentSlide = 0;
+  }
+
+  const transformValue = -currentSlide * slideWidth;
+  slider.style.transform = `translateX(${transformValue}px)`;
+}
+
+function showSection(section) {
+  // Update the logic if needed
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('event').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('contact').style.display = 'none';
+
+  currentSlide = 0; // Reset slide when changing section
+
+  document.getElementById(section).style.display = 'block';
+
+  if (section === 'event') {
+    // Fetch events from the server and populate the slider
+    fetchEvents();
+  }
+}
+
+function fetchEvents() {
+  const eventSlider = document.getElementById('eventSlider');
+  const loadingMessage = document.createElement('div');
+  loadingMessage.className = 'loading-message';
+  loadingMessage.textContent = 'Loading events...';
+  eventSlider.innerHTML = ''; // Clear existing content
+  eventSlider.appendChild(loadingMessage);
+
+  // Make an AJAX request to fetch events
+  // Note: Replace the URL with your actual endpoint for fetching events
+  fetch('/get-events')
+    .then(response => response.json())
+    .then(events => {
+      // Remove loading message
+      eventSlider.removeChild(loadingMessage);
+
+      // Populate the event slider with fetched events
+      events.forEach(event => {
+        const eventDetails = document.createElement('div');
+        eventDetails.className = 'event-details';
+        eventDetails.innerHTML = `
+          <h3>${event.name}</h3>
+          <img src="${event.image}" alt="${event.name} Image">
+          <p>Name: ${event.name}</p>
+          <p>Last Date: ${event.date}</p>
+          <div class="button-container">
+            <!-- Add an event listener to the dynamically created button -->
+            <button onclick="showRegistrationForm()">Register</button>
+            <button>Know More</button>
+          </div>
+        `;
+        eventSlider.appendChild(eventDetails);
+      });
+
+      // Show the first slide
+      showSlide();
+    })
+    .catch(error => {
+      console.error('Error fetching events:', error);
+      loadingMessage.textContent = 'Error fetching events. Please try again.';
+    });
+}
+
+// Function to show the registration form
+function showRegistrationForm() {
+  const form = document.getElementById('registrationFormContainer'); // Updated ID
+  const overlay = document.getElementById('overlay');
+
+  form.style.display = 'block';
+  overlay.className = 'overlay-visible';
+
+  // Disable interactions with elements outside the form
+  document.body.style.overflow = 'hidden'; // Prevent scrolling
+  document.getElementById('navbar').style.pointerEvents = 'none';
+  document.getElementById('content').style.pointerEvents = 'none';
+}
+
+// Function to hide the registration form and overlay
+function hideRegistrationForm() {
+  const form = document.getElementById('registrationFormContainer'); // Updated ID
+  const overlay = document.getElementById('overlay');
+
+  form.style.display = 'none';
+  overlay.className = 'overlay-hidden';
+
+  // Enable interactions with elements outside the form
+  document.body.style.overflow = ''; // Restore scrolling
+  document.getElementById('navbar').style.pointerEvents = 'auto';
+  document.getElementById('content').style.pointerEvents = 'auto';
+}
+
+// Function to generate QR code
+function generateQRCode() {
+  const paymentMethod = document.getElementById('paymentMethod').value;
+  const qrContainer = document.getElementById('qrcodeContainer');
+  qrContainer.innerHTML = ''; // Clear previous QR code
+
+  // Generate QR code based on payment method
+  const qrCode = new QRCode(10, QRCode.ErrorCorrectLevel.H);
+  qrCode.addData(paymentMethod);
+  qrCode.make();
+
+  // Create image element for the QR code
+  const qrImage = qrCode.createImgTag();
+  qrContainer.innerHTML = qrImage;
+}
+  </script>
+
+
+
+</body></html>
