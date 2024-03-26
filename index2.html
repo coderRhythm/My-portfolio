@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <style>
-        
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .navbar{
+
+        .navbar {
             display: flex;
             height: 50px;
             background-color: rgb(255, 255, 255);
@@ -25,84 +26,90 @@
             width: 100%;
             z-index: 9999;
         }
-        .navbar img{
+
+        .navbar img {
             /* border-radius: 0 1; */
             position: absolute;
             left: 2px;
         }
-        .nav-elements{
+
+        .nav-elements {
             position: absolute;
             left: 500px;
             top: 10px;
         }
-        .nav-elements ul{
+
+        .nav-elements ul {
             display: flex;
             gap: 100px;
-            
+
             align-items: center;
             justify-content: center;
         }
 
-        .nav-elements ul li{
+        .nav-elements ul li {
             list-style-type: none;
         }
-        .nav-elements ul li a{
+
+        .nav-elements ul li a {
             display: block;
-  position:relative;
-  text-decoration:none;
-  padding:5px;
-  font-size:18px;
-  font-family: sans-serif;
-  color:#000000;
-  text-transform:uppercase;
-  transition:0.5s;
-            
+            position: relative;
+            text-decoration: none;
+            padding: 5px;
+            font-size: 18px;
+            font-family: sans-serif;
+            color: #000000;
+            text-transform: uppercase;
+            transition: 0.5s;
+
         }
 
-        .nav-elements ul li a:hover{
-            transform:scale(2);
-  opacity:1;
-  filter:blur(0);
-  text-decoration:none;
-  color:#fff;
-        
+        .nav-elements ul li a:hover {
+            transform: scale(2);
+            opacity: 1;
+            filter: blur(0);
+            text-decoration: none;
+            color: #fff;
+
         }
 
-        .nav-elements ul li a:before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#ff497c;
-  transition:0.5s;
-  transform-origin:right;
-  transform:scaleX(0);
-  z-index:-1;
-}
+        .nav-elements ul li a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff497c;
+            transition: 0.5s;
+            transform-origin: right;
+            transform: scaleX(0);
+            z-index: -1;
+        }
 
 
-.navbar ul li a:hover:before{
-  transition:transform 0.5s;
-  transform-origin:left;
-  transform:scaleX(1);
-}
+        .navbar ul li a:hover:before {
+            transition: transform 0.5s;
+            transform-origin: left;
+            transform: scaleX(1);
+        }
 
-        .home{
+        .home {
             height: 100vh;
             padding-top: 250px;
             display: flex;
             justify-content: space-around;
         }
-        .home .right .img1 img{
+
+        .home .right .img1 img {
             height: 200px;
             width: 200px;
             position: absolute;
             left: 1000px;
             border-radius: 10px 10px 10px 10px;
         }
-        .home .right .img2 img{
+
+        .home .right .img2 img {
             height: 200px;
             width: 200px;
             position: absolute;
@@ -110,45 +117,51 @@
             top: 100px;
             border-radius: 10px 10px 10px 10px;
         }
-        .home .left{
+
+        .home .left {
             position: absolute;
             left: 300px;
         }
-        .home .left h1{
+
+        .home .left h1 {
             /* padding-top: 30px; */
             text-align: center;
             font-size: 60px;
             font-family: "Madimi One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+            font-weight: 400;
+            font-style: normal;
 
         }
 
-        .home .left h2{
+        .home .left h2 {
             text-align: center;
             width: 600px;
         }
-        .home .left h2 .name{
+
+        .home .left h2 .name {
             color: rgb(255, 0, 0);
             font-weight: bold;
         }
-        #element{
+
+        #element {
             color: #ff497c;
         }
 
 
         /* skills */
-        .about{
+        .about {
             padding-top: 20px;
-            
+
         }
-        .header{
+
+        .header {
             text-align: center;
             color: #000000;
             padding: 1rem;
             position: relative;
         }
-        .header::after{
+
+        .header::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -160,9 +173,9 @@
 
         }
 
-        .container{
+        .container {
             display: grid;
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(3, 1fr);
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -170,16 +183,19 @@
             padding: 1rem 80px;
             font-size: 1.2rem;
         }
-        
-        .skill-box{
+
+        .skill-box {
             padding: 1rem;
             color: #000000;
             cursor: pointer;
         }
-        .skill-box:hover>.skill-title:after,.skill-box:hover>.skill-title:before{
+
+        .skill-box:hover>.skill-title:after,
+        .skill-box:hover>.skill-title:before {
             width: 35px;
         }
-        .skill-title{
+
+        .skill-title {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -188,19 +204,19 @@
             position: relative;
         }
 
-        .skill-title:after{
+        .skill-title:after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 50%;
             width: 0;
-            border-radius:  2px 0  0 2px;
+            border-radius: 2px 0 0 2px;
             background-color: #2ecc71;
             transition: 0.5s;
 
         }
 
-        .skill-title:before{
+        .skill-title:before {
             content: '';
             position: absolute;
             bottom: 0;
@@ -208,10 +224,10 @@
             width: 0;
             border-radius: 0 2px 2px 0;
             background-color: #2ecc71;
-            transition: 0.5s;   
+            transition: 0.5s;
         }
 
-        .img{
+        .img {
             width: 90px;
             height: 90px;
             position: relative;
@@ -221,222 +237,205 @@
             justify-content: center;
             align-items: center;
         }
-        .img:after{
+
+        .img:after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 50%;
             height: 90px;
-            background-color: rgba(100,100,100,100);
+            background-color: rgba(100, 100, 100, 100);
             border-radius: 45px 0 0 45px;
         }
-        .skill-title h3{
+
+        .skill-title h3 {
             color: #000000;
             margin-top: 0.5rem;
         }
-        .skill-icon{
+
+        .skill-icon {
             width: 50px;
             z-index: 2;
         }
 
-        @media screen and (min-width: 770px) and (max-width: 990px)  {
-            .navbar{
-                position: fixed;
-                display: flex;
-                flex-direction: column;
-            }
-            .nav-elements ul{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-            .home{
-                /* padding: 300px; */
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 10px;
-                
-                border: 2px solid black;
-                
-            }
 
-            
-            
-            .home .left {
-                position: absolute;
-               
-               text-align: center;
-               font-size: 16px;/* Adjust margin for centering */
-            }
-            .home .left h1{
-                position: absolute;
-                left: -340px;
 
-                /* bottom: 40px; */
-                width: 900px;
-                /* font-size: 20px; */
+        /* services */
+        #services {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f1f3f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
 
-            }
-            .home .left .left-inner{
-                position: absolute;
-                left: -200px;
-                top: 100px;
-                font-size: 16px;
-                /* top: 200px; */
-            }
-
-            .home .right {
-                position: absolute;
-                top: 300px;
-                left: 200px; /* Adjust margin for centering */
-            }
-            .home .right .img1 img{
-                left: 150px;
-                top:500px;
-                height: 200px;
-                width: 200px;
-                z-index: 1000;
-            } 
-            .home .right .img2 img{
-                left: 0;
-                top: 200px;
-                height: 200px;
-                width: 200px;
-                left: 150px;
-            }
-
-            
-
-            .container{
-                    grid-template-columns: repeat(2,1fr);
-                    padding: 2rem 50px;
-                    /* padding-left: -100px; */
-            }
         }
-        @media screen and (min-width: 650px) and (max-width: 770px)  {
-            .navbar{
+
+        #services h2 {
+            color: #007bff;
+            font-size: 2em;
+            margin-bottom: 20px;
+            /* font-size: 40px; */
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .slider-content {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .project-card {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .project-card img {
+            max-width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .control-btn {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .control-btn:hover {
+            background-color: #007bff;
+        }
+
+        /* contact */
+        .contact {
+            height: 100vh;
+        }
+
+        .contact-form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #495057;
+            font-size: 1.2em;
+        }
+
+        input,
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+        @media screen and (max-width: 650px) {
+            .navbar {
                 display: flex;
                 flex-direction: column;
             }
-            .nav-elements ul{
+
+            .nav-elements ul {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                position: fixed;
             }
-            .home{
+
+            .home {
                 /* padding: 300px; */
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                
+                left: 0;
                 border: 2px solid black;
-                
+
             }
 
-            
+
             .home .right {
                 text-align: center;
             }
 
             .home .left {
                 position: absolute;
-               left: 0px;
-               /* width: 100px; */
-               top: 0px;
-               /* border: 2px solid black; */
-               /* width: 200px;  */
-               font-size: 16px;/* Adjust margin for centering */
-            }
-            .home .left h1{
-                position: absolute;
-                left: 0;
-                top: 150px;
-                /* bottom: 40px; */
-                width: 600px;
-                font-size: 20px;
+                left: 0px;
+                top: 0px;
 
-            }
-            .home .left .left-inner{
-                position: absolute;
-                left: 0;
-                top: 200px;
                 font-size: 16px;
-                /* top: 200px; */
+                /* Adjust margin for centering */
             }
 
-            .home .right {
+            .home .left h1 {
                 position: absolute;
-                top: 300px;
-                left: 200px; /* Adjust margin for centering */
-            }
-            .home .right .img1 img{
-                left: 0;
-                top:200px;
-                height: 200px;
-                width: 200px;
-                z-index: 1000;
-            } 
-            .home .right .img2 img{
-                left: 0;
-                top: 200px;
-                height: 200px;
-                width: 200px;
-                left: 150px;
-            }
-
-            
-
-            .container{
-                    grid-template-columns: 1fr;
-                    padding: 2rem 50px;
-
-            }
-        }
-        @media screen and (max-width: 650px)
-        {
-            .navbar{
-                display: flex;
-                flex-direction: column;
-            }
-            .nav-elements ul{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-            .home{
-                /* padding: 300px; */
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                left: 0;
-                border: 2px solid black;
-                
-            }
-
-            
-            .home .right {
-                text-align: center;
-            }
-
-            .home .left {
-                position: absolute;
-               left: 0px;
-               top: 0px;
-               
-               font-size: 16px;/* Adjust margin for centering */
-            }
-            .home .left h1{
-                position: absolute; 
                 left: -100px;
                 top: 60px;
-                
+
                 width: 600px;
                 font-size: 20px;
 
             }
-            .home .left .left-inner{
+
+            .home .left .left-inner {
                 position: absolute;
                 left: -100px;
                 top: 100px;
@@ -448,161 +447,209 @@
             .home .right {
                 position: absolute;
                 top: 300px;
-                left: 200px; /* Adjust margin for centering */
+                left: 200px;
+                /* Adjust margin for centering */
             }
-            .home .right .img1 img{
+
+            .home .right .img1 img {
                 left: -100px;
-                top:-60px;
+                top: -60px;
                 height: 200px;
                 width: 200px;
                 z-index: 1000;
-            } 
-            .home .right .img2 img{
+            }
+
+            .home .right .img2 img {
                 left: 0;
                 top: 150px;
                 height: 200px;
                 width: 200px;
                 left: -100px;
             }
-            .container{
+
+            .container {
                 grid-template-columns: 1fr;
                 padding: 2rem 50px;
                 text-align: center;
             }
         }
 
+        @media screen and (min-width: 650px) and (max-width: 770px) {
+            .navbar {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-elements ul {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                position: fixed;
+            }
+
+            .home {
+                /* padding: 300px; */
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                border: 2px solid black;
+
+            }
 
 
-        /* services */
-        #services {
-      padding: 20px;
-      border-radius: 8px;
-      background-color: #f1f3f5;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
+            .home .right {
+                text-align: center;
+            }
 
-    }
+            .home .left {
+                position: absolute;
+                left: 0px;
+                /* width: 100px; */
+                top: 0px;
+                /* border: 2px solid black; */
+                /* width: 200px;  */
+                font-size: 16px;
+                /* Adjust margin for centering */
+            }
 
-    #services h2 {
-      color: #007bff;
-      font-size: 2em;
-      margin-bottom: 20px;
-      /* font-size: 40px; */
-    }
+            .home .left h1 {
+                position: absolute;
+                left: 0;
+                top: 150px;
+                /* bottom: 40px; */
+                width: 600px;
+                font-size: 20px;
 
-    .slider-container {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      margin-top: 20px;
-    }
+            }
 
-    .slider-content {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
+            .home .left .left-inner {
+                position: absolute;
+                left: 0;
+                top: 200px;
+                font-size: 16px;
+                /* top: 200px; */
+            }
 
-    .project-card {
-      flex: 0 0 100%;
-      box-sizing: border-box;
-      padding: 20px;
-      text-align: center;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-right: 20px;
-      transition: box-shadow 0.2s;
-    }
+            .home .right {
+                position: absolute;
+                top: 300px;
+                left: 200px;
+                /* Adjust margin for centering */
+            }
 
-    .project-card img {
-      max-width: 100%;
-      height: 600px;
-      border-radius: 8px;
-      transition: transform 0.3s;
-    }
+            .home .right .img1 img {
+                left: 0;
+                top: 200px;
+                height: 200px;
+                width: 200px;
+                z-index: 1000;
+            }
 
-    .project-card:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+            .home .right .img2 img {
+                left: 0;
+                top: 200px;
+                height: 200px;
+                width: 200px;
+                left: 150px;
+            }
 
-    .project-card:hover img {
-      transform: scale(1.05);
-    }
 
-    .slider-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
 
-    .control-btn {
-      background-color: #343a40;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+            .container {
+                grid-template-columns: 1fr;
+                padding: 2rem 50px;
 
-    .control-btn:hover {
-      background-color: #007bff;
-    }
+            }
+        }
 
-    /* contact */
-    .contact{
-        height: 100vh;
-    }
-    .contact-form {
-      max-width: 400px;
-      margin: 20px auto;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      
-    }
+        @media screen and (min-width: 770px) and (max-width: 990px) {
+            .navbar {
+                position: fixed;
+                display: flex;
+                flex-direction: column;
+            }
 
-    form {
-      display: flex;
-      flex-direction: column;
-    }
+            .nav-elements ul {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
-    label {
-      margin-top: 10px;
-      color: #495057;
-      font-size: 1.2em;
-    }
+            .home {
+                /* padding: 300px; */
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
 
-    input,
-    textarea {
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #ced4da;
-      border-radius: 5px;
-    }
+                border: 2px solid black;
 
-    button {
-      padding: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+            }
 
-    button:hover {
-      background-color: #0056b3;
-    }
 
+
+            .home .left {
+                position: absolute;
+
+                text-align: center;
+                font-size: 16px;
+                /* Adjust margin for centering */
+            }
+
+            .home .left h1 {
+                position: absolute;
+                left: -340px;
+
+                /* bottom: 40px; */
+                width: 900px;
+                /* font-size: 20px; */
+
+            }
+
+            .home .left .left-inner {
+                position: absolute;
+                left: -200px;
+                top: 100px;
+                font-size: 16px;
+                /* top: 200px; */
+            }
+
+            .home .right {
+                position: absolute;
+                top: 300px;
+                left: 200px;
+                /* Adjust margin for centering */
+            }
+
+            .home .right .img1 img {
+                left: 150px;
+                top: 500px;
+                height: 200px;
+                width: 200px;
+                z-index: 1000;
+            }
+
+            .home .right .img2 img {
+                left: 0;
+                top: 200px;
+                height: 200px;
+                width: 200px;
+                left: 150px;
+            }
+
+
+
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2rem 50px;
+                /* padding-left: -100px; */
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="navbar" >
+    <div class="navbar">
         <img src="OIG2.h4EE.jpeg" alt="" height="44px">
         <div class="nav-elements">
             <ul>
@@ -614,7 +661,7 @@
             </ul>
         </div>
 
-        
+
     </div>
 
     <div class="home" id="home">
@@ -622,12 +669,12 @@
         <div class="left">
             <h1>Welcome to my portfolio</h1>
             <br>
-        <div class="left-inner">
-            <h2>My name is <span class="name">Rhythm sethiya</span> and</h2><br>
-        <h2>I am a <span id="element"></span></h2>
-        <br>
-        <h2>Currently I am persuing the B.TECH Degree in CSE </h2>
-        </div>
+            <div class="left-inner">
+                <h2>My name is <span class="name">Rhythm sethiya</span> and</h2><br>
+                <h2>I am a <span id="element"></span></h2>
+                <br>
+                <h2>Currently I am persuing the B.TECH Degree in CSE </h2>
+            </div>
         </div>
 
         <div class="right">
@@ -651,11 +698,13 @@
                     </div>
                     <h3>python</h3>
 
+                </div>
+
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum
+                    incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt
+                    inventore quo laboriosam.</P>
             </div>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt inventore quo laboriosam.</P>
-            </div>
-       
             <div class="skill-box">
                 <div class="skill-title">
                     <div class="img">
@@ -663,11 +712,13 @@
                     </div>
                     <h3>c++</h3>
 
+                </div>
+
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum
+                    incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt
+                    inventore quo laboriosam.</P>
             </div>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt inventore quo laboriosam.</P>
-            </div>
-       
             <div class="skill-box">
                 <div class="skill-title">
                     <div class="img">
@@ -675,11 +726,13 @@
                     </div>
                     <h3>HTML 5</h3>
 
+                </div>
+
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum
+                    incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt
+                    inventore quo laboriosam.</P>
             </div>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt inventore quo laboriosam.</P>
-            </div>
-        
             <div class="skill-box">
                 <div class="skill-title">
                     <div class="img">
@@ -687,11 +740,13 @@
                     </div>
                     <h3>CSS</h3>
 
+                </div>
+
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum
+                    incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt
+                    inventore quo laboriosam.</P>
             </div>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt inventore quo laboriosam.</P>
-            </div>
-      
             <div class="skill-box">
                 <div class="skill-title">
                     <div class="img">
@@ -699,11 +754,13 @@
                     </div>
                     <h3>JS</h3>
 
+                </div>
+
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum
+                    incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt
+                    inventore quo laboriosam.</P>
             </div>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt inventore quo laboriosam.</P>
-            </div>
-        
             <div class="skill-box">
                 <div class="skill-title">
                     <div class="img">
@@ -711,9 +768,11 @@
                     </div>
                     <h3>express JS</h3>
 
-            </div>
+                </div>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt inventore quo laboriosam.</P>
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis qui sequi sed consequuntur cum
+                    incidunt minus at, expedita dicta corporis vero dolorum non sapiente provident. Error deserunt
+                    inventore quo laboriosam.</P>
             </div>
         </div>
 
@@ -722,91 +781,92 @@
     <div id="services" class="content">
         <h2>Services Content</h2>
         <div class="slider-container">
-          <div class="slider-content" id="projectSlider">
-            <!-- Project Cards go here -->
-            <div class="project-card">
-              <img src="img/bank.png" alt="Project 1">
-              <h3>Banking frontend system</h3>
-              <p>Description of Project 1.</p>
+            <div class="slider-content" id="projectSlider">
+                <!-- Project Cards go here -->
+                <div class="project-card">
+                    <img src="img/bank.png" alt="Project 1">
+                    <h3>Banking frontend system</h3>
+                    <p>Description of Project 1.</p>
+                </div>
+                <div class="project-card">
+                    <img src="img/event.png" alt="Project 2">
+                    <h3>College event management system frontend and backend system</h3>
+                    <p>Handling events </p>
+                </div>
+                <div class="project-card">
+                    <img src="img/food.png" alt="Project 2">
+                    <h3>food subscription system frontend</h3>
+                    <p>Description of Project 2.</p>
+                </div>
             </div>
-            <div class="project-card">
-              <img src="img/event.png" alt="Project 2">
-              <h3>College event management system frontend and backend system</h3>
-              <p>Handling events </p>
+            <div class="slider-controls">
+                <button class="control-btn" onclick="prevProject()">&#10094;</button>
+                <button class="control-btn" onclick="nextProject()">&#10095;</button>
             </div>
-            <div class="project-card">
-              <img src="img/food.png" alt="Project 2">
-              <h3>food subscription system frontend</h3>
-              <p>Description of Project 2.</p>
-            </div>
-          </div>
-          <div class="slider-controls">
-            <button class="control-btn" onclick="prevProject()">&#10094;</button>
-            <button class="control-btn" onclick="nextProject()">&#10095;</button>
-          </div>
         </div>
-      </div>
-    
-      
-<div id="contact" class="content">
-    <h2>Contact</h2>
-  
-    <div class="contact-form">
-      <form id="contactForm">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
-  
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
-  
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" required>
-  
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-  
-        <button type="submit">Send Message</button>
-      </form>
     </div>
-  
-  </div>
-  
-</div>
+
+
+    <div id="contact" class="content">
+        <h2>Contact</h2>
+
+        <div class="contact-form">
+            <form id="contactForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+
+    </div>
 
     <script>
         var typed = new Typed('#element', {
-          strings: ['<i>frontend</i> developer.', 'a machine learning enthusiast.'],
-          typeSpeed: 50,
-          
+            strings: ['<i>frontend</i> developer.', 'a machine learning enthusiast.'],
+            typeSpeed: 50,
+
         });
 
-        var slideIndex = 0; 
-  function showProjects(index) {
-    var slider = document.getElementById('projectSlider');
-    slideIndex = index;
-    slider.style.transform = 'translateX(' + (-index * 100) + '%)';
-  }
+        var slideIndex = 0;
+        function showProjects(index) {
+            var slider = document.getElementById('projectSlider');
+            slideIndex = index;
+            slider.style.transform = 'translateX(' + (-index * 100) + '%)';
+        }
 
-  function prevProject() {
-    if (slideIndex > 0) {
-      slideIndex--;
-    } else {
-      slideIndex = document.getElementsByClassName('project-card').length - 1;
-    }
-    showProjects(slideIndex);
-  }
+        function prevProject() {
+            if (slideIndex > 0) {
+                slideIndex--;
+            } else {
+                slideIndex = document.getElementsByClassName('project-card').length - 1;
+            }
+            showProjects(slideIndex);
+        }
 
-  function nextProject() {
-    var projects = document.getElementsByClassName('project-card');
-    if (slideIndex < projects.length - 1) {
-      slideIndex++;
-    } else {
-      slideIndex = 0;
-    }
-    showProjects(slideIndex);
-  }
+        function nextProject() {
+            var projects = document.getElementsByClassName('project-card');
+            if (slideIndex < projects.length - 1) {
+                slideIndex++;
+            } else {
+                slideIndex = 0;
+            }
+            showProjects(slideIndex);
+        }
 
-      </script>
+    </script>
 
 </body>
+
 </html>
